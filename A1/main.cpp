@@ -1,15 +1,14 @@
 #include <iostream>
 
 int main( ) {
-    int speed {20};
+    double force {172.5};
     
-    int time = {10};
+    double area {27.5};
     
-    int distance;
+    double pressure;
     
-    distance = speed * time;
+    pressure =  area / force;
     
-    std::cout << distance <<std::endl;
+    std::cout << pressure << std::endl;
     
-    return 0;
 }

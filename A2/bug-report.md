@@ -4,61 +4,87 @@
 
 ``` 
 #include <iostream>
+using namespace std;
 
 int main( ) {
-    int speed {20};
-    
-    int time = {10};
-    
-    int distance;
-    
-    speed * time = distance
-    
-    std::cout << distance <<std::endl;
-    
-    return 0;
+    int selection;
+  cout << "Which formula do you want to see?\n\n";
+  cout << "1. Area of a circle\n";
+  cout << "2. Area of a rectangle\n";
+  cout << "3. Area of a cylinder\n";
+  cout << "4. None of them!\n";
+  cin >> selection;
+  switch (selection) {
+      case 1;
+      cout << "Pi times radius squared\n";
+      break;
+      case 2:
+      cout << "Length times width\n";
+      break;
+      case 3:
+      cout << "Pi times radius squared times height\n";
+      break;
+      case 4:
+      cout << "Well okay then, good bye!\n";
+      break;
+      default:
+      cout << "Not good with numbers, eh?\n";
+      
+  }
+  return 0;
 }
-
-
 ```
 
 2. **What bug does the original code have?**
 
-Distance should be first instead of speed or time. When defining a variable it should be the first thing in the line. 
+Case 1 is followed by a semi colon instead of a colon
 
 3. **What misunderstanding of C++ concepts lead you to this incorrect code?**
 
-Thinking that the variable could be placed any where when being defined 
+No misunderstanding some how it was mistyped
 
 4. **How to correct the bug?**
 
-Put the variable that is being defined at the front
+Change from a semi colon to a colon.
 
 5. **The corresponding bug-free code or code snippet is:**
 
 ```
 #include <iostream>
+using namespace std;
 
 int main( ) {
-    int speed {20};
-    
-    int time = {10};
-    
-    int distance;
-    
-    distance = speed * time;
-    
-    std::cout << distance <<std::endl;
-    
-    return 0;
+    int selection;
+  cout << "Which formula do you want to see?\n\n";
+  cout << "1. Area of a circle\n";
+  cout << "2. Area of a rectangle\n";
+  cout << "3. Area of a cylinder\n";
+  cout << "4. None of them!\n";
+  cin >> selection;
+  switch (selection) {
+      case 1:
+      cout << "Pi times radius squared\n";
+      break;
+      case 2:
+      cout << "Length times width\n";
+      break;
+      case 3:
+      cout << "Pi times radius squared times height\n";
+      break;
+      case 4:
+      cout << "Well okay then, good bye!\n";
+      break;
+      default:
+      cout << "Not good with numbers, eh?\n";
+      
+  }
+  return 0;
 }
-
-
 ```
 
 6. **What is the take-away message from this bug?**
 
-To list the variable that needs to be first before defining what it does.
+To check over simple things as it can lead to bugs.
 ---
 
 # Bug 2
@@ -67,59 +93,88 @@ To list the variable that needs to be first before defining what it does.
 
 ```
 #include <iostream>
+#include <iomanip>
+using namespace std;
 
 int main( ) {
-    double force {172.5};
-    
-    double area {27.5};
-    
-    int pressure;
-    
-    pressure =  area / force;
-    
-    std::cout << pressure << std::endl;
-    
+    cout << fixed << setprecision(2);
+    cout <<"Please enter 0 to indicate USD->CAD conversion, or enter 1 to indicate CAD->USD conversion: \n";
+    int conversion;
+    const int conversion_rate {1.32};
+    cin >> conversion;
+    switch (conversion) {
+        //usd to cad calc
+    case 0:
+        cout <<"Please enter the amount of USD dollars: \n";
+        int USD;
+        cin >> USD;
+        cout <<"They can be converted to "<< USD * conversion_rate <<" CAD.\n";
+    break;
+    //cad to usd calc
+    case 1:
+        cout <<"Please enter the amount of CAD dollars: \n";
+        int CAD;
+        cin >> CAD;
+        cout <<"They can be converted to "<< CAD / conversion_rate <<" USD.\n";
+        break;
+        default:
+        cout <<"Sorry invalid option" <<endl;
+    }
+    return 0;
 }
-
-
 ```
 
 2. **What bug does the original code have?**
 
-Have int instead of another double
+int for usd cad and conversion_rate should be changed to double so the user may enter decimal numbers. And Program will not run due to const int being a decimal number.
   
 3. **What misunderstanding of C++ concepts lead you to this incorrect code?**
 
-Not being 100% sure of whether the 3 variable would be a int or a double
+Not thinking about possible complications or bug that would happen from using int instead of double.
 
 4. **How to correct the bug?**
 
-Change int to double
+Change int to double for int usd cad and conversion_rate
 
 5. **The corresponding bug-free code or code snippet is:**
 
 ```
 #include <iostream>
+#include <iomanip>
+using namespace std;
 
 int main( ) {
-    double force {172.5};
+    cout << fixed << setprecision(2);
+    cout <<"Please enter 0 to indicate USD->CAD conversion, or enter 1 to indicate CAD->USD conversion: \n";
+    int conversion;
+    const double conversion_rate {1.32};
+    cin >> conversion;
+    switch (conversion) {
+        //usd to cad calc
+    case 0:
+        cout <<"Please enter the amount of USD dollars: \n";
+        double USD;
+        cin >> USD;
+        cout <<"They can be converted to "<< USD * conversion_rate <<" CAD.\n";
+    break;
+    //cad to usd calc
+    case 1:
+        cout <<"Please enter the amount of CAD dollars: \n";
+        double CAD;
+        cin >> CAD;
+        cout <<"They can be converted to "<< CAD / conversion_rate <<" USD.\n";
+        break;
+        default:
+        cout <<"Sorry invalid option" <<endl;
+    }
     
-    double area {27.5};
-    
-    double pressure;
-    
-    pressure =  area / force;
-    
-    std::cout << pressure << std::endl;
-    
+    return 0;
 }
-
-
 ```
 
 6. **What is the take-away message from this bug?**
 
-That if the end number will result in a decimal that it should not be int but double instead.
+That if a decimal may come into play use double as it will prevent bugs in the future.
 ---
 
 # Bug 3
@@ -128,55 +183,48 @@ That if the end number will result in a decimal that it should not be int but do
 
 ```
 #include <iostream>
-
-int main( ) {
-    double force {172.5}
-    
-    double area {27.5}
-    
-    double pressure;
-    
-    pressure =  area / force;
-    
-    std::cout << pressure << std::endl;
-    
-}
+using namespace std;
+int main()
+{
+  int selection;
+  cout << "Which formula do you want to see?\n\n";
+  cout << "1. Area of a circle\n";
+  cout << "2. Area of a rectangle\n";
+  cout << "3. Area of a cylinder\n"
+  cout << "4. None of them!\n";
+  cin >> selection;
 
 ```
 
 2. **What bug does the original code have?**
 
-Missing 2 semicolons
-  
+Missing a semicolon  
 
 3. **What misunderstanding of C++ concepts lead you to this incorrect code?**
 
-The concept of assigning the variable in the same statement instead of 2 seperate statements
+No misunderstanding was from code off of review_session.md and didnt realize the bug.
 
 4. **How to correct the bug?**
 
-Add semicolons to the two lines that are missing them
+Add a semi colon 
 
 5. **The corresponding bug-free code or code snippet is:**
 
 ```
 #include <iostream>
-
-int main( ) {
-    double force {172.5};
-    
-    double area {27.5};
-    
-    double pressure;
-    
-    pressure =  area / force;
-    
-    std::cout << pressure << std::endl;
-    
-}
+using namespace std;
+int main()
+{
+  int selection;
+  cout << "Which formula do you want to see?\n\n";
+  cout << "1. Area of a circle\n";
+  cout << "2. Area of a rectangle\n";
+  cout << "3. Area of a cylinder\n";
+  cout << "4. None of them!\n";
+  cin >> selection;
 
 ```
 
 6. **What is the take-away message from this bug?**
 
-To add a semicolon after assigning the variable in the line
+To not use code without checking over it for bugs

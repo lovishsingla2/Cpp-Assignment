@@ -168,7 +168,8 @@ int main()
 
 6. **What is the take-away message from this bug?**
 
-That if a decimal may come into play use double as it will prevent bugs in the future.
+To look over code more cautiously to spot simple mistakes/bugs
+
 ---
 
 # Bug 3

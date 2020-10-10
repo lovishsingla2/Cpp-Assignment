@@ -115,6 +115,7 @@ bool prime_check(int number) {
 ```
 
 2. **What bug does the original code have?**
+
 Missing #include <cmath>
   
 3. **What misunderstanding of C++ concepts lead you to this incorrect code?**
@@ -122,6 +123,7 @@ Missing #include <cmath>
 Forgot to include cmath
 
 4. **How to correct the bug?**
+
 Add cmath to the top of the code
 
 5. **The corresponding bug-free code or code snippet is:**
@@ -162,7 +164,8 @@ bool prime_check(int number) {
 ```
 
 6. **What is the take-away message from this bug?**
-To check what headers are needed at the top of the code
+
+ To check what headers are needed at the top of the code
 
 ---
 
@@ -206,14 +209,16 @@ bool prime_check(int number) {
 ```
 
 2. **What bug does the original code have?**
+
 Is missing a single )
 
 3. **What misunderstanding of C++ concepts lead you to this incorrect code?**
+
 Forgot to add another ) to close the if statement
 
 4. **How to correct the bug?**
- add )
 
+add )
 
 5. **The corresponding bug-free code or code snippet is:**
 
@@ -253,4 +258,5 @@ bool prime_check(int number) {
 ```
 
 6. **What is the take-away message from this bug?**
+
 To watch for simple mistakes that can break a program
